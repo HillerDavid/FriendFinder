@@ -25,11 +25,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <div class="row">
+                        <img class="img-fluid col-6" src="" alt="" id="user-photo">
+                        <img class="img-fluid col-6" src="" alt="" id="match-photo">
+                    </div>
+                    <div class="row">
+                        <p class="col-6" id="user-name"></p>
+                        <p class="col-6" id="match-name"></p>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -67,11 +72,11 @@
         <div class='row'>
             <div class="list-group" id="question-buttons">
                 <li class="list-group-item disabled" id="question"></li>
-                <button type="button" class="list-group-item list-group-item-action answer" id="answer-0" score='1'></button>
-                <button type="button" class="list-group-item list-group-item-action answer" id="answer-1" score='2'></button>
-                <button type="button" class="list-group-item list-group-item-action answer" id="answer-2" score='3'></button>
-                <button type="button" class="list-group-item list-group-item-action answer" id="answer-3" score='4'></button>
-                <button type="button" class="list-group-item list-group-item-action answer" id="answer-4" score='5'></button>
+                <button type="button" class="list-group-item list-group-item-action answer" id="answer-0" value='1'></button>
+                <button type="button" class="list-group-item list-group-item-action answer" id="answer-1" value='2'></button>
+                <button type="button" class="list-group-item list-group-item-action answer" id="answer-2" value='3'></button>
+                <button type="button" class="list-group-item list-group-item-action answer" id="answer-3" value='4'></button>
+                <button type="button" class="list-group-item list-group-item-action answer" id="answer-4" value='5'></button>
             </div>
         </div>
     </div>
@@ -83,35 +88,47 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
-    <script>
+    <script type="text/javascript">
 
         $(document).ready(() => {
             let counter = 0
-            let userInput = {}
+            let inputData = {
+                name: "",
+                photo: "",
+                scores: []
+            }
+
             $('#submit-button').on('click', (event) => {
                 event.preventDefault()
-                
-                userInput.name = $('#inputName').val().trim()
-                userInput.photo = $('#inputPhotoURL').val().trim()
 
+
+                inputData.name = $('#inputName').val().trim()
+                inputData.photo = $('#inputPhotoURL').val().trim()
+                $('#user-name').text(inputData.name)
+                $('#user-photo').attr('src', inputData.photo)
                 $('form').hide()
 
                 $('#question-buttons *').show()
 
                 updateQuestion()
-
-                $(document).on('click', '.answer', () => {
-
-                    userInput['scores'] = $(this).attr('score')
-                    userInput['scores'] = $(this).attr('score')
-                    console.log(userInput)
-                    updateQuestion()
-
-                    if (counter > 4) {
-                        $('#question-buttons').hide()
-                    }
-                })
             })
+
+            $(document).on('click', '.answer', function () {
+
+                inputData.scores.push(parseInt($(this).attr('value')))
+                console.log(inputData)
+                updateQuestion()
+
+                if (counter > 4) {
+                    $.post('api/friends', inputData).then(data => {
+                        $('#match-name').text(data.name)
+                        $('#match-photo').attr('src', data.photo)
+                    })
+                    $('.modal').modal()
+                    $('#question-buttons').hide()
+                }
+            })
+
 
             function updateQuestion() {
                 $.ajax({

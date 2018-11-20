@@ -13,7 +13,31 @@ module.exports = (app) => {
 
     //Route handling incoming survey results
     app.post('/api/friends', (req, res) => {
-        
+        let match = 100
+        let matchedFriend = ''
+
+        let inputData = req.body
+        let userScores = inputData.scores
+
+        let scoreDifferences = []
+
+        for (let i = 0; i < friends.length; i++) {
+            let totalDifference = 0
+
+            for (let j = 0; j < userScores.length; j++) {
+                totalDifference += (Math.abs(friends[i].scores[j]) - (userScores[j]))
+            }
+
+            scoreDifferences.push(totalDifference)
+        }
+
+        scoreDifferences.forEach(scoreTotal => {
+            if (scoreTotal <= match) {
+                match = scoreTotal
+            }
+        })
+
+        matchedFriend = friends[match]
+        res.json(matchedFriend)
     })
 }
-

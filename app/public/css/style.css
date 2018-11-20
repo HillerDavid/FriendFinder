@@ -1,5 +1,5 @@
 body {
-    background-image: url('../..//images/pipboy.png');
+    background-image: url('../../images/pipboy.png');
     background-repeat:no-repeat;
     background-size: cover;
     width: 100vw;
@@ -51,6 +51,15 @@ input, select, textarea{
    background: transparent;
    margin-top: 4em;
    margin-left: 8em;
+}
+
+.modal {
+    text-align: center;
+}
+
+.modal img{
+    height:250px;
+    width:100%;
 }
 
 button {
