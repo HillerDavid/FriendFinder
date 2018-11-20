@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">
-    <link rel="stylesheet" href="../data/css/style.css" type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -17,10 +17,15 @@
     <div class='container'>
         <div class='row'>
             <div class="jumbotron">
-                <h1 class="display-4">Friend Finder</h1>
+                <h1 class="display-4" id='content-header'>Friend Finder</h1>
+                <hr>
                 <p>Find out which Vault-Boy personality will be your new best friend!</p>
-                <p>Take the survey to find out!</p>
-                <button type="button"><a href="/survey">Take Survey</a></button>
+                <p id="selection-divide">Take the survey to find out!</p>
+                <ul>
+                <button type="button" id="survey-link"><a href="/survey">Take Survey</a></button><br>
+                <button type="button" id="api-link"><a href="/api/friends">View Friend API</a></button><br>
+                <button type="button" id="github-link"><a href="https://github.com/HillerDavid/FriendFinder">View Github Page</a></button>
+                </ul>
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 body {
-    background-image: url('../../public/images/pipboy.png');
+    background-image: url('../..//images/pipboy.png');
     background-repeat:no-repeat;
     background-size: cover;
     width: 100vw;
@@ -8,6 +8,23 @@ body {
     color: rgb(169,210,152);
     text-shadow: 2px 2px black;
     font-size: larger
+}
+
+a, a:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+#content-header {
+    border-bottom: 0.05em solid rgb(169,210,152);
+}
+
+#survey-link {
+    margin-top: 10em;
+}
+
+#selection-divide {
+    border-bottom: 0.05em solid rgb(169,210,152);
 }
 
 #question-buttons * {
