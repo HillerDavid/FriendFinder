@@ -121,12 +121,13 @@
                     updateQuestion()
                 } else {
                     $.post('api/friends', inputData).then(data => {
+                        console.log(data)
                         $('#match-name').text(data.name)
                         $('#match-photo').attr('src', data.photo)
-                        
+                        $('.modal').modal()
                     })
                     $('#question-buttons').hide()
-                    $('.modal').modal()
+                    
                 }
             })
 

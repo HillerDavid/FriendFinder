@@ -13,6 +13,7 @@ module.exports = (app) => {
 
     //Route handling incoming survey results
     app.post('/api/friends', (req, res) => {
+        
         let match = 100
         let matchedFriend = ''
 
@@ -31,12 +32,13 @@ module.exports = (app) => {
             scoreDifferences.push(totalDifference)
         }
 
-        scoreDifferences.forEach(scoreTotal => {
-            if (scoreTotal <= match) {
-                match = scoreTotal
+        for(let i = 0; i < scoreDifferences.length; i++){
+            if(scoreDifferences[i] <= match) {
+                match = i
             }
-        })
-
+        }
+        
+        console.log(match)
         matchedFriend = friends[match]
         res.json(matchedFriend)
     })
