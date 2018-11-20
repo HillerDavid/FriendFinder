@@ -123,8 +123,8 @@
                     $.post('api/friends', inputData).then(data => {
                         $('#match-name').text(data.name)
                         $('#match-photo').attr('src', data.photo)
+                        $('.modal').modal()
                     })
-                    $('.modal').modal()
                     $('#question-buttons').hide()
                 }
             })
