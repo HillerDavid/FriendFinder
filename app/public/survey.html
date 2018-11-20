@@ -116,10 +116,10 @@
             $(document).on('click', '.answer', function () {
 
                 inputData.scores.push(parseInt($(this).attr('value')))
-                console.log(inputData)
-                updateQuestion()
 
-                if (counter > 4) {
+                if (counter < 4) {
+                    updateQuestion()
+                } else {
                     $.post('api/friends', inputData).then(data => {
                         $('#match-name').text(data.name)
                         $('#match-photo').attr('src', data.photo)
