@@ -39,16 +39,39 @@
         <div class='row'>
             <div class="jumbotron">
                 <h1 class="display-4" id="content-header">Friend Finder</h1>
+                <p>Enter your name and URL to a photo of yourself.</p>
+                <p id="selection-divide">Click next when complete.</p>
             </div>
         </div>
+
+        <form>
+            <div class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputName" placeholder="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPhotoURL" class="col-sm-2 col-form-label">Photo URL</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputPhotoURL" placeholder="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" id="submit-button">Next</button>
+                </div>
+            </div>
+        </form>
+
         <div class='row'>
             <div class="list-group" id="question-buttons">
                 <li class="list-group-item disabled" id="question"></li>
-                <button type="button" class="list-group-item list-group-item-action answer" id="answer-0"></button>
-                <button type="button" class="list-group-item list-group-item-action answer" id="answer-1"></button>
-                <button type="button" class="list-group-item list-group-item-action answer" id="answer-2"></button>
-                <button type="button" class="list-group-item list-group-item-action answer" id="answer-3"></button>
-                <button type="button" class="list-group-item list-group-item-action answer" id="answer-4"></button>
+                <button type="button" class="list-group-item list-group-item-action answer" id="answer-0" score='1'></button>
+                <button type="button" class="list-group-item list-group-item-action answer" id="answer-1" score='2'></button>
+                <button type="button" class="list-group-item list-group-item-action answer" id="answer-2" score='3'></button>
+                <button type="button" class="list-group-item list-group-item-action answer" id="answer-3" score='4'></button>
+                <button type="button" class="list-group-item list-group-item-action answer" id="answer-4" score='5'></button>
             </div>
         </div>
     </div>
@@ -64,16 +87,30 @@
 
         $(document).ready(() => {
             let counter = 0
+            let userInput = {}
+            $('#submit-button').on('click', (event) => {
+                event.preventDefault()
+                
+                userInput.name = $('#inputName').val().trim()
+                userInput.photo = $('#inputPhotoURL').val().trim()
 
-            updateQuestion()
+                $('form').hide()
 
-            $('.answer').on('click', () => {
+                $('#question-buttons *').show()
 
                 updateQuestion()
 
-                if (counter > 4) {
-                    $('#question-buttons').hide()
-                }
+                $(document).on('click', '.answer', () => {
+
+                    userInput['scores'] = $(this).attr('score')
+                    userInput['scores'] = $(this).attr('score')
+                    console.log(userInput)
+                    updateQuestion()
+
+                    if (counter > 4) {
+                        $('#question-buttons').hide()
+                    }
+                })
             })
 
             function updateQuestion() {

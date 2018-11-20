@@ -15,6 +15,17 @@ a, a:hover {
     text-decoration: none;
 }
 
+form {
+    margin-left: 9em;
+    color: inherit;
+}
+
+input, select, textarea{
+    color: rgb(169,210,152) !important;
+    background-color: transparent !important;
+    border: 0.05em solid rgb(169,210,152) !important;
+ }
+
 #content-header {
     border-bottom: 0.05em solid rgb(169,210,152);
 }
@@ -28,6 +39,7 @@ a, a:hover {
 }
 
 #question-buttons * {
+    display: none;
     background: transparent;
     border: none;
     width: 50vw;
