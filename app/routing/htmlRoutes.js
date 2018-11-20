@@ -4,7 +4,7 @@ module.exports = (app) => {
 
     //Route that leads to home page
     app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, '..public/home.html'))
+        res.sendFile(path.join(__dirname, '../public/home.html'))
     })
 
     //Route to display survey page
