@@ -1,9 +1,7 @@
 let express = require('express')
-let path = require('path')
-
 let app = express()
 
-let PORT = 80
+let PORT = process.env.PORT || 80
 
 app.use(express.urlencoded({
     extended: true

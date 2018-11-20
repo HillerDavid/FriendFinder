@@ -10,7 +10,7 @@ body {
     font-size: larger
 }
 
-#question * {
+#question-buttons * {
     background: transparent;
     border: none;
     width: 50vw;
@@ -30,7 +30,7 @@ button {
     color: rgb(169,210,152)
 }
 
-button:hover, #question>button:hover {
+button:hover, #question-buttons>button:hover {
     background: initial;
     background-color: rgb(169,210,152);
     color: rgb(0,89,34)
