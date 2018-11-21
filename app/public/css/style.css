@@ -53,8 +53,17 @@ input, select, textarea{
    margin-left: 8em;
 }
 
-.modal {
-    text-align: center;
+.invalid-input {
+    display: none;
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: rgb(169,210,152);
+}
+
+.modal-content, .modal-header, .modal-footer {
+    background: transparent;
+    border: none;
 }
 
 .modal img{

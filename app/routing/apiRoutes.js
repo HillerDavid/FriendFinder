@@ -38,7 +38,6 @@ module.exports = (app) => {
             }
         }
         
-        console.log(match)
         matchedFriend = friends[match]
         res.json(matchedFriend)
     })

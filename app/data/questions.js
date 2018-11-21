@@ -1,23 +1,23 @@
 let questions = [
     {
-        question: '1',
-        answers: ['a', 'b', 'c', 'd', 'e']
+        question: `Conflict just ain't in my nature.`,
+        answers: ['Strongly Disagree', 'Disagree', 'No Opinion', 'Agree', 'Strongly Agree']
     },
     {
-        question: '2',
-        answers: ['a', 'b', 'c', 'd', 'e']
+        question: `I ain't given to relying on others for support.`,
+        answers: ['Strongly Disagree', 'Disagree', 'No Opinion', 'Agree', 'Strongly Agree']
     },
     {
-        question: '3',
-        answers: ['a', 'b', 'c', 'd', 'e']
+        question: `I'm always fixing to be the center of attention.`,
+        answers: ['Strongly Disagree', 'Disagree', 'No Opinion', 'Agree', 'Strongly Agree']
     },
     {
-        question: '4',
-        answers: ['a', 'b', 'c', 'd', 'e']
+        question: `I'm slow to embrace new ideas.`,
+        answers: ['Strongly Disagree', 'Disagree', 'No Opinion', 'Agree', 'Strongly Agree']
     },
     {
-        question: '5',
-        answers: ['a', 'b', 'c', 'd', 'e']
+        question: `I charge in to deal with my problems head-on.`,
+        answers: ['Strongly Disagree', 'Disagree', 'No Opinion', 'Agree', 'Strongly Agree']
     }
 ]
 

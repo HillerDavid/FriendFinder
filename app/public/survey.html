@@ -20,9 +20,6 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="friend-modal-title">Meet your friend!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
@@ -34,7 +31,8 @@
                         <p class="col-6" id="match-name"></p>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="footer">
+                    <button type="button"><a href="/">Reset Terminal</button></a>
                 </div>
             </div>
         </div>
@@ -53,13 +51,15 @@
             <div class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputName" placeholder="">
+                    <input type="text" class="form-control validate" id="inputName" placeholder="">
+                    <div class="invalid-input">Please enter your name.</div>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="inputPhotoURL" class="col-sm-2 col-form-label">Photo URL</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPhotoURL" placeholder="">
+                    <input type="text" class="form-control validate" id="inputPhotoURL" placeholder="">
+                    <div class="invalid-input">Please enter URL to photo of yourself.</div>
                 </div>
             </div>
             <div class="form-group row">
@@ -99,18 +99,22 @@
             }
 
             $('#submit-button').on('click', (event) => {
-                event.preventDefault()
+                if (validate() === true) {
+                    event.preventDefault()
 
+                    inputData.name = $('#inputName').val().trim()
+                    inputData.photo = $('#inputPhotoURL').val().trim()
+                    $('#user-name').text(inputData.name)
+                    $('#user-photo').attr('src', inputData.photo)
+                    $('form').hide()
+                    $('#question-buttons *').show()
 
-                inputData.name = $('#inputName').val().trim()
-                inputData.photo = $('#inputPhotoURL').val().trim()
-                $('#user-name').text(inputData.name)
-                $('#user-photo').attr('src', inputData.photo)
-                $('form').hide()
-
-                $('#question-buttons *').show()
-
-                updateQuestion()
+                    updateQuestion()
+                }
+                else {
+                    event.preventDefault()
+                    $('.invalid-input').show()
+                }
             })
 
             $(document).on('click', '.answer', function () {
@@ -121,16 +125,25 @@
                     updateQuestion()
                 } else {
                     $.post('api/friends', inputData).then(data => {
-                        console.log(data)
+
                         $('#match-name').text(data.name)
                         $('#match-photo').attr('src', data.photo)
                         $('.modal').modal()
                     })
                     $('#question-buttons').hide()
-                    
+
                 }
             })
 
+            function validate() {
+                var valid = true;
+                $('.validate').each(function () {
+                    if ($(this).val() === '') {
+                        valid = false;
+                    }
+                });
+                return valid
+            }
 
             function updateQuestion() {
                 $.ajax({

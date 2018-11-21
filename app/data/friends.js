@@ -6,8 +6,8 @@ let friends = [
             1,
             2,
             1,
-            4,
-            2
+            2,
+            1
         ]
     },
     {
@@ -15,8 +15,8 @@ let friends = [
         "photo": "../../images/vaultboy-gangster.png",
         "scores": [
             5,
-            5,
             3,
+            1,
             2,
             1
         ]
@@ -25,7 +25,7 @@ let friends = [
         "name": "Hoarder Harry",
         "photo": "../../images/vaultboy-hoarder.png",
         "scores": [
-            5,
+            3,
             2,
             2,
             4,
@@ -36,8 +36,8 @@ let friends = [
         "name": "Medic Mike",
         "photo": "../../images/vaultboy-medic.png",
         "scores": [
-            1,
-            2,
+            3,
+            4,
             3,
             5,
             5
@@ -49,7 +49,7 @@ let friends = [
         "scores": [
             5,
             4,
-            3,
+            5,
             4,
             5
         ]
