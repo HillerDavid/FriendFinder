@@ -128,7 +128,7 @@
 
                         $('#match-name').text(data.name)
                         $('#match-photo').attr('src', data.photo)
-                        $('.modal').modal()
+                        $('.modal').modal({backdrop: 'static', keyboard: false})
                     })
                     $('#question-buttons').hide()
 
